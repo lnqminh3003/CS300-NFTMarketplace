@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "2bde6278-3aac-4459-bd60-541ab86a8136",
+		"name": "Seazle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24050554"
+	},
+	"item": [
+		{
+			"name": "NFT",
+			"item": [
+				{
+					"name": "Create NFT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"(required) nft name\",\n    \"contentUrl\": \"(required) https://stackoverflow.com/questions/62001726/find-with-array-of-ids-in-mongoose\",\n    \"description\": \"(optional) description\",\n    \"network\": \"(required) BEP20\",\n    \"price\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/nft/create",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create many NFTs",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"(required) nft name\",\n        \"contentUrl\": \"(required) https://stackoverflow.com/questions/62001726/find-with-array-of-ids-in-mongoose\",\n        \"description\": \"(optional) description\",\n        \"network\": \"(required) BEP20\",\n        \"price\": 10\n    },\n    {\n        \"name\": \"(required) nft name\",\n        \"contentUrl\": \"(required) https://stackoverflow.com/questions/62001726/find-with-array-of-ids-in-mongoose\",\n        \"description\": \"(optional) description\",\n        \"network\": \"(required) BEP20\",\n        \"price\": 10\n    },\n    {\n        \"name\": \"(required) nft name\",\n        \"contentUrl\": \"(required) https://stackoverflow.com/questions/62001726/find-with-array-of-ids-in-mongoose\",\n        \"description\": \"(optional) description\",\n        \"network\": \"(required) BEP20\",\n        \"price\": 10\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/nft/create-many",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"create-many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get NFT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/nft/get/63969214340bc68467e1c34a",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"get",
+								"63969214340bc68467e1c34a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get many NFTs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"63969214340bc68467e1c34a\",\n    \"63969214340bc68467e1c34b\",\n    \"639691e5340bc68467e1c347\"\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/nft/get-many",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"get-many"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update NFT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"(optional) updated nft name\",\n    \"contentUrl\": \"(optional) https://stackoverflow.com/questions/32329330/how-to-get-get-multiple-variables-in-express-js-on-node-js\",\n    \"description\": \"(optional) updated description\",\n    \"network\": \"(optional) ETH\",\n    \"price\": 12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/nft/update/639691e5340bc68467e1c347",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"update",
+								"639691e5340bc68467e1c347"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete NFT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/nft/delete/63969214340bc68467e1c349",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"delete",
+								"63969214340bc68467e1c349"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all NFTs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/nft/get-all",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"nft",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://localhost:3030",
+			"type": "string"
+		}
+	]
+}
