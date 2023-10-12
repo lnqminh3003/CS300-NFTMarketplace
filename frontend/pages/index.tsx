@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Seazle</title>
+        <title>AuraSky</title>
         <link
           rel="icon"
           href="https://i.imgur.com/98gX8Ky.png"

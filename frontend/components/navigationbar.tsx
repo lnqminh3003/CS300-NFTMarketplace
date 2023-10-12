@@ -112,7 +112,7 @@ const NavigationBar = (searchQuery: any) => {
               className="h-6 mr-3 sm:h-9"
             />
             <span className="self-center text-3xl font-semibold whitespace-nowrap text-slate-800">
-              Seazle
+              AuraSky
             </span>
           </a>
           {/* Search bar */}
