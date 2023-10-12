@@ -104,7 +104,7 @@ const NavigationBar = (searchQuery: any) => {
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           {/* Logo */}
           <a
-            href="https://client-seazle.vercel.app/"
+            href="https://cs-300-aurasky-marketplace.vercel.app/"
             className="flex items-center"
           >
             <img

@@ -4,7 +4,7 @@ const Loading =()=>{
       <div className="relative w-auto my-6 mx-auto max-w-3xl">
         <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-blue-400 outline-none focus:outline-none">
           <div className="relative p-6 flex-auto items-center">
-            <p className="text-1xl font-semibold whitespace-nowrap dark:text-white">LOADING...</p>
+            <p className="text-2xl font-bold whitespace-nowrap dark:text-white">LOADING...</p>
           </div>
         </div>
       </div>
