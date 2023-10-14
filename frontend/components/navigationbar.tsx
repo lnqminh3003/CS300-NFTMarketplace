@@ -103,7 +103,7 @@ const NavigationBar = (searchQuery: any) => {
       <nav className="p-2 bg-gradient-to-r from-cyan-500 via-teal-300 to-rose-300">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className="flex items-center"
           >
@@ -114,7 +114,7 @@ const NavigationBar = (searchQuery: any) => {
             <span className="self-center text-3xl font-semibold whitespace-nowrap text-slate-800">
               AuraSky
             </span>
-          </a>
+          </Link>
           {/* Search bar */}
           <div className="flex items-center relative mx-auto text-gray-600 w-1/2">
             <svg
