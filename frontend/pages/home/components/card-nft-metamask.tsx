@@ -1,5 +1,10 @@
 import Link from "next/link";
 import lodash from "lodash";
+import { storage } from "../../../utils/firebase";
+import { getStorage, ref, getDownloadURL, listAll } from "firebase/storage";
+import { useState } from "react";
+
+const storageRefImage = ref(storage,"files/quangminh.jpg");
 
 var ImageURL = [
     "https://imageio.forbes.com/specials-images/imageserve/6170e01f8d7639b95a7f2eeb/Sotheby-s-NFT-Natively-Digital-1-2-sale-Bored-Ape-Yacht-Club--8817-by-Yuga-Labs/0x0.png?format=png&width=960",
@@ -19,11 +24,24 @@ function randomIntFromInterval(min:any, max:any) {
 }
 
 function CardNFTMetamask({ id, name }: { id: string; name: string }) {
+  const[image,setImage] = useState('');
+
+    console.log(id);
+  getDownloadURL(ref(storage,"files/" + id ))
+  .then((url) => {
+    console.log(url)
+    setImage(url);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+
   return (
     <Link href={{ pathname: "./nft", query: { id: id } }}>
       <div className="relative flex-wrap w-60 h-60 inline-block">
         <img
-          src= {ImageURL[randomIntFromInterval(0,ImageURL.length-1)]}
+          src= {image}
           alt=""
           className=" w-60 h-60 object-cover rounded-3xl"
         />
@@ -32,9 +50,6 @@ function CardNFTMetamask({ id, name }: { id: string; name: string }) {
         <div className="w-auto h-12 absolute bottom-8 left-3 right-3 rounded-xl p-1 px-3">
           <div className="text-2xl font-bold text-white truncate">
             ID: {id}
-          </div>
-          <div className="text-sm  text-white">
-            Name: {name}
           </div>
         </div>
       </div>

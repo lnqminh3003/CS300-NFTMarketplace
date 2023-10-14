@@ -14,6 +14,7 @@ export default function Sell() {
   const [success, setSuccess] = useState<boolean>(false);
   const [item, setItem] = useState<any>();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading,setIsLoading]= useState(false);
 
   const [showModal, setShowModal] = useState(false);
   const [modalSuccess, setModalSuccess] = useState(false);
@@ -58,12 +59,14 @@ export default function Sell() {
     } catch (err) {
       setModalSuccess(false);
       setModalFail(true);
+      setIsLoading(false);
       setShowModal(false);
     }
   };
 
   const onSubmit = () => {
     let description = document.getElementById("p_description")?.textContent;
+    setIsLoading(true);
     let name = document.getElementById("p_name")?.textContent;
     axios
       .put(`${HOST}/nft/create`, {
@@ -86,6 +89,7 @@ export default function Sell() {
       .catch((error) => console.log(error));
 
     setSuccess(true);
+    setIsLoading(false);
   };
 
   if (!isLoaded) {
@@ -180,6 +184,7 @@ export default function Sell() {
                     <button
                       onClick={() => {
                         setSuccess(false);
+                        router.reload();
                       }}
                       data-modal-toggle="defaultModal"
                       type="button"
@@ -193,7 +198,29 @@ export default function Sell() {
             </div>
           )}
         </div>
-
+        {isLoading == true && (
+          <div>
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+              <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
+                <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
+                  {/* <img
+                    src="https://cdn-icons-png.flaticon.com/512/148/148767.png"
+                    className="p-1 rounded h-11 w-11"
+                    alt="..."
+                  /> */}
+                  <h3 className="text-xl font-semibold pt-2 pl-4 text-gray-900 dark:text-white">
+                    LOADING TRANSACTION 
+                  </h3>
+                </div>
+                <div className="p-6 space-y-6">
+                  <p className="font-semibold text-base leading-relaxed text-gray-700 dark:text-gray-400">
+                   ... Please wait ...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}  
         {showModal == true && (
           <div>
             <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
@@ -267,6 +294,7 @@ export default function Sell() {
                   <button
                     onClick={() => {
                       setModalSuccess(false);
+                      router.reload();
                     }}
                     data-modal-toggle="defaultModal"
                     type="button"
@@ -302,6 +330,7 @@ export default function Sell() {
                   <button
                     onClick={() => {
                       setModalFail(false);
+                      router.reload();
                     }}
                     data-modal-toggle="defaultModal"
                     type="button"

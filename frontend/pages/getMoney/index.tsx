@@ -47,13 +47,15 @@ useEffect(() => {
 const getMoney= async ()=>{
   if(money == "0") return;
     if (typeof window.ethereum != "undefined") {
-        if (defaultAccount != "") {
+        if (acc != "") {
+          console.log("a");
+          console.log(acc)
           try {
             var valueInWei = await web3.utils.toWei(money).toString();
             await contractAddress()
-              .methods.sendEther(defaultAccount, valueInWei, "minh")
+              .methods.sendEther(acc, valueInWei, "minh")
               .send({
-                from: defaultAccount,
+                from: acc,
               });
 
               axios.delete(`${HOST}/money/delete/${localStorage.getItem("account")}`)

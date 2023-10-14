@@ -29,6 +29,8 @@ export default function NFTPage() {
   const [modalSuccess_keep, setModalSuccess_keep] = useState(false);
   const [modalFail_keep, setModalFail_keep] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [isEditting, setIsEditting] = useState(false);
 
   useEffect(() => {
@@ -49,13 +51,16 @@ export default function NFTPage() {
   }, [query.id]);
 
   const buyNFT = async () => {
+    setShowModal(false);
     if (typeof window.ethereum != "undefined") {
       if (acc != "") {
         try {
           console.log("function called");
+          setIsLoading(true);
           var valueInWei = await web3.utils
             .toWei(item.price.toString())
             .toString();
+            console.log(valueInWei);
           await contract()
             .methods.buyNFT(item.idNFT.toString(), valueInWei)
             .send({
@@ -69,7 +74,7 @@ export default function NFTPage() {
               ownerAddress: item.ownerAddress,
               money: item.price,
             })
-            .then((res) => {})
+            .then((res) => {console.log("hello")})
             .catch((error) => console.log(error));
 
           axios
@@ -78,11 +83,14 @@ export default function NFTPage() {
             .catch((error) => console.log(error));
 
           setModalSuccess(true);
+          setIsLoading(false);
           setShowModal(false);
           setModalFail(false);
         } catch (err) {
           console.log("error");
           setModalSuccess(false);
+          setIsLoading(false);
+          setIsLoading(false);
           setModalFail(true);
           setShowModal(false);
         }
@@ -95,6 +103,7 @@ export default function NFTPage() {
       if (acc != "") {
         try {
           setModalSuccess_keep(true);
+          setIsLoading(false);
           setShowModal_keep(false);
           setModalFail_keep(false);
 
@@ -125,6 +134,7 @@ export default function NFTPage() {
             .catch((error) => console.log(error));
         } catch (err) {
           setModalSuccess_keep(false);
+          setIsLoading(false);
           setModalFail_keep(true);
           setShowModal_keep(false);
         }
@@ -308,10 +318,32 @@ export default function NFTPage() {
             </div>
           </span>
         </div>
-
+        {isLoading == true && (
+          <div>
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+              <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
+                <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
+                  {/* <img
+                    src="https://cdn-icons-png.flaticon.com/512/148/148767.png"
+                    className="p-1 rounded h-11 w-11"
+                    alt="..."
+                  /> */}
+                  <h3 className="text-xl font-semibold pt-2 pl-4 text-gray-900 dark:text-white">
+                    LOADING TRANSACTION 
+                  </h3>
+                </div>
+                <div className="p-6 space-y-6">
+                  <p className="font-semibold text-base leading-relaxed text-gray-700 dark:text-gray-400">
+                   ... Please wait ...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}              
         {showModal == true && (
           <div>
-            <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
               <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                   <svg
@@ -368,7 +400,7 @@ export default function NFTPage() {
         )}
         {showModal_keep == true && (
           <div>
-            <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
               <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <div className="flex items-center p-4 border-b rounded-t dark:border-gray-600">
                   <svg
@@ -419,9 +451,10 @@ export default function NFTPage() {
             </div>
           </div>
         )}
+
         {modalSuccess == true && (
           <div>
-            <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
               <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
                 <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                   <img
@@ -456,7 +489,7 @@ export default function NFTPage() {
         )}
         {modalFail == true && (
           <div>
-            <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
               <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
                 <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                   <img
@@ -492,7 +525,7 @@ export default function NFTPage() {
 
         {modalSuccess_keep == true && (
           <div>
-            <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
               <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
                 <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                   <img
@@ -522,7 +555,7 @@ export default function NFTPage() {
         )}
         {modalFail_keep == true && (
           <div>
-            <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
               <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
                 <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                   <img

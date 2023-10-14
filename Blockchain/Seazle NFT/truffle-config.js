@@ -11,12 +11,12 @@ module.exports = {
       network_id: 56,
       skipDryRun: true,
     },
-
-    bscTestnet: {
-      provider: () =>
-        new HDWalletProvider(mnemonic, "https://data-seed-prebsc-1-s1.binance.org:8545/"),
+    testnet: {
+      provider: () => new HDWalletProvider(mnemonic, `https://floral-fluent-needle.bsc-testnet.quiknode.pro/b488701420b4a082279df007a6275836c1883a64/`),
       network_id: 97,
       skipDryRun: true,
+      networkCheckTimeout: 10000,
+      timeoutBlocks: 200
     },
   },
 
@@ -25,7 +25,7 @@ module.exports = {
   },
   compilers: {
     solc: {
-      version: "0.8.17" 
+      version: "0.8.20" 
     }
   }
 };

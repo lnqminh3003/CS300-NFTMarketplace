@@ -2,16 +2,17 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAdE3zaC4__VoAgn0k2vs-LY17rjsT3lHw",
-  authDomain: "apcs-seazle.firebaseapp.com",
+  apiKey: "AIzaSyBSWL142TTJJx_TfaYG6RSKLXM2GwAJo4g",
+  authDomain: "cs300-nftmarketplace.firebaseapp.com",
   databaseURL: "https://apcs-seazle-default-rtdb.firebaseio.com",
-  projectId: "apcs-seazle",
-  storageBucket: "apcs-seazle.appspot.com",
-  messagingSenderId: "11225254826",
-  appId: "1:11225254826:web:e00e459c05bc86eaadb9d3",
+  projectId: "cs300-nftmarketplace",
+  storageBucket: "cs300-nftmarketplace.appspot.com",
+  messagingSenderId: "480564484054",
+  appId: "1:480564484054:web:90c9dc17a12c40a03a7677"
 };
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 export { storage };
+

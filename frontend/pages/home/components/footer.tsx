@@ -9,7 +9,7 @@ export default function Footer() {
                             className="h-6 mr-3 sm:h-9"
                         />
                         <span className="self-center text-3xl font-semibold whitespace-nowrap text-white">
-                            Seazle
+                            AuraSky
                         </span>
                     </div>
                     <div className="text-white text-sm font-medium mt-5 w-96 text-justify">
@@ -80,8 +80,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="text-center text-white mt-10 text-xs">
-                <i className="fa-regular fa-copyright"></i> 2023 - 2024 Seazle
-                Group, VNU HCMUS
+                <i className="fa-regular fa-copyright"></i> 2023 - 2024 CS300-AuraSky, VNU HCMUS
             </div>
         </div>
     );

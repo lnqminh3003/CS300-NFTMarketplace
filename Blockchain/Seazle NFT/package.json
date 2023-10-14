@@ -1,6 +1,21 @@
 {
   "dependencies": {
-    "@openzeppelin/contracts": "^4.7.3",
-    "@truffle/hdwallet-provider": "^2.1.0"
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "truffle": "^5.11.5"
+  },
+  "name": "seazle-nft",
+  "version": "1.0.0",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^5.0.0"
   }
 }

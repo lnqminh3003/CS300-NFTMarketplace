@@ -59,29 +59,32 @@ export default function NFTPage() {
     if (firstTime == false) {
       await Moralis.start({
         apiKey:
-          "HGl0bOLcWkPRRLAmD5xN2JmFTMvTTM0CPanypE2AdILzo2MbN2JaXmzAR5Y1gJ0o",
+          "PewXlFVYfFw6hRsVhi6vOJ6wSSOb0DFSlxNmTwjFED5D04vuVU03z0HS5TxdrGQB",
       });
       firstTime = true;
     }
 
     var address = localStorage.getItem("account")!.toString();
-    const chain = EvmChain.BSC_TESTNET;
+    const chain = EvmChain.SEPOLIA;
     const response = await Moralis.EvmApi.nft.getWalletNFTs({
       address,
       chain,
     });
 
     var tmp = response.toJSON();
+    console.log(tmp);
     var result = Object.entries(tmp);
-    var arrayNFT = result[4][1];
+    var arrayNFT = result[3][1];
     console.log(arrayNFT);
     for (let i = 0; i < arrayNFT.length; i++) {
-      if (arrayNFT[i]["token_address"] == "0xda8487633128b4f3751fc5138dfa69acc5f3fcd4") {
+      if (arrayNFT[i]["token_address"] == "0xf5d552828fa32b0dbef296c791130e899119dbd6") {
+        console.log("aaa")
         arrayID.push(arrayNFT[i]);
       }
     }
 
     await setArrayRender(arrayID)
+    console.log(arrayID);
     arrayID =[]
     console.log(arrayID);
 

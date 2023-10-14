@@ -5,6 +5,7 @@ import { v4 } from "uuid";
 import { HOST } from "../../utils/constant";
 import { storage } from "../../utils/firebase";
 import NavigationBar from "../../components/navigationbar";
+import { useRouter } from "next/router";
 
 export default function Create(this: any) {
   const [file, setFile] = useState<any | null>(null);
@@ -12,19 +13,24 @@ export default function Create(this: any) {
   const [desc, setDesc] = useState<string>();
   const [blob, setBlob] = useState<string | undefined>();
   const [success, setSuccess] = useState<boolean>(false);
+  const [isLoading,setIsLoading]= useState(false);
+  const router = useRouter();
+
+const reload = ()=>{
+  
+}
 
   const onSubmit = () => {
     if (file == null) {
       return;
     }
-
-    const fileRef = ref(storage, `files/${v4()}`);
+    setIsLoading(true);
     axios
       .get(`${HOST}/idMinted/get`)
       .then((res) => {
         const ids = res.data;
         const idNFT = (parseInt(ids[0].idNFT.toString()) + 1).toString();
-
+        const fileRef = ref(storage, `files/${idNFT}`);
         uploadBytes(fileRef, file)
           .then((snapshot) => {
             getDownloadURL(snapshot.ref)
@@ -48,6 +54,7 @@ export default function Create(this: any) {
                         console.log(res);
                         console.log(res.data);
                         setSuccess(true);
+                        setIsLoading(false);
                       })
                       .catch((error) => console.log(error));
                   })
@@ -184,7 +191,29 @@ export default function Create(this: any) {
           </div>
         </div>
       </div>
-
+      {isLoading == true && (
+          <div>
+            <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+              <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
+                <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
+                  {/* <img
+                    src="https://cdn-icons-png.flaticon.com/512/148/148767.png"
+                    className="p-1 rounded h-11 w-11"
+                    alt="..."
+                  /> */}
+                  <h3 className="text-xl font-semibold pt-2 pl-4 text-gray-900 dark:text-white">
+                    LOADING TRANSACTION 
+                  </h3>
+                </div>
+                <div className="p-6 space-y-6">
+                  <p className="font-semibold text-base leading-relaxed text-gray-700 dark:text-gray-400">
+                   ... Please wait ...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}           
       {success && (
         <div>
           <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
@@ -203,9 +232,12 @@ export default function Create(this: any) {
 
               <div className="flex items-center p-6 space-x-2  rounded-b dark:border-gray-600">
                 <button
-                  onClick={() => {
-                    setSuccess(false);
-                  }}
+                  onClick={()=>{
+                    console.log("a");
+                  setSuccess(false);
+                
+                  router.reload();
+                }}
                   data-modal-toggle="defaultModal"
                   type="button"
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

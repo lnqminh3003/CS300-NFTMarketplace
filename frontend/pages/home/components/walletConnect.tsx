@@ -96,7 +96,7 @@ const WalletConnect = () => {
                       className="p-1 rounded h-11 w-11"
                       alt="..."
                     />
-                    <h3 className="pl-2 text-3xl font-semibold whitespace-nowrap dark:text-white">
+                    <h3 className="pl-2 text-5xl font-bold whitespace-nowrap dark:text-white">
                       Wallet
                     </h3>
                   </div>

@@ -104,7 +104,7 @@ const NavigationBar = (searchQuery: any) => {
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           {/* Logo */}
           <a
-            href="https://cs-300-aurasky-marketplace.vercel.app/"
+            href="/"
             className="flex items-center"
           >
             <img
@@ -238,16 +238,16 @@ const NavigationBar = (searchQuery: any) => {
 
         {showModal ? (
           <>
-            <div className=" bg-neutral-700 bg-opacity-40 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className=" bg-black bg-opacity-60 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gradient-to-r outline-none focus:outline-none">
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-blue-300 outline-none focus:outline-none">
                   <div className=" flex items-start p-5 border-solid border-slate-200 rounded-t">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/1200px-MetaMask_Fox.svg.png"
                       className="p-1 rounded h-11 w-11"
                       alt="..."
                     />
-                    <h3 className="pl-2 text-3xl font-semibold whitespace-nowrap dark:text-white">
+                    <h3 className="pl-2 text-4xl font-bold whitespace-nowrap dark:text-white">
                       Wallet
                     </h3>
                   </div>
@@ -713,9 +713,9 @@ const NavigationBar = (searchQuery: any) => {
                     )}
                   </div>
 
-                  <div className="flex items-center justify-end p-6 border-solid border-slate-200 rounded-b">
+                  <div className="flex items-center justify-end pb-6 pr-6 border-solid border-slate-200 rounded-b">
                     <button
-                      className="bg-emerald-400 text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-blue-500 text-black active:bg-blue-300 font-bold uppercase text-sm px-6 py-3 rounded-lg shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => setShowModal(false)}
                     >
@@ -730,7 +730,7 @@ const NavigationBar = (searchQuery: any) => {
       </div>
       {modalMetamask == true && (
         <div>
-          <div className="grid place-items-center bg-neutral-700 bg-opacity-40 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+          <div className="grid place-items-center bg-black bg-opacity-60 fixed top-0 left-0 right-0 z-50 w-full p-4 overflw-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
             <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-96 grid place-items-center">
               <div className="flex items-start p-4 border-b rounded-t dark:border-gray-600">
                 <img
@@ -739,11 +739,11 @@ const NavigationBar = (searchQuery: any) => {
                   alt="..."
                 />
                 <h3 className="text-xl font-semibold pt-2 pl-4 text-gray-900 dark:text-white">
-                  Fail Connect
+                  FAIL CONNECT
                 </h3>
               </div>
               <div className="p-6 space-y-6">
-                <p className="font-semibold text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                <p className="font-bold text-base leading-relaxed text-gray-700 dark:text-gray-400">
                   INSTALL METAMASK FIRST
                 </p>
               </div>
@@ -754,7 +754,7 @@ const NavigationBar = (searchQuery: any) => {
                   }}
                   data-modal-toggle="defaultModal"
                   type="button"
-                  className="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Let's go
                 </button>
