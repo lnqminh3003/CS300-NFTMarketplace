@@ -77,7 +77,7 @@ export default function NFTPage() {
     var arrayNFT = result[3][1];
     console.log(arrayNFT);
     for (let i = 0; i < arrayNFT.length; i++) {
-      if (arrayNFT[i]["token_address"] == "0xf5d552828fa32b0dbef296c791130e899119dbd6") {
+      if (arrayNFT[i]["token_address"] == "0x47eddcd092baf2a06860827c32fee8002d2e540e") {
         console.log("aaa")
         arrayID.push(arrayNFT[i]);
       }

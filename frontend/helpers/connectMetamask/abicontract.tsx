@@ -3,7 +3,7 @@ import web3 from './web3'
 declare global {
 	var contractAddress :string  ;
 }
-global.contractAddress = "0xf5D552828FA32b0DBeF296c791130e899119DBD6";
+global.contractAddress = "0x47EDdCd092bAf2a06860827c32fee8002d2E540E";
 
 const abiContract = [
 	{
