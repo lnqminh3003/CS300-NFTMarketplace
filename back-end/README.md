@@ -1,4 +1,4 @@
-# SEAZLE API
+# AURASKY API
 
 ## Postman Usage
 
