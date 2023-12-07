@@ -47,7 +47,8 @@ const NavigationBar = (searchQuery: any) => {
           accountChangeHandler(result);
         });
     } else {
-      setModalMetamask(true);
+      localStorage.setItem("account", "");
+     // setModalMetamask(true);
       console.log("Install Metamask");
     }
   };

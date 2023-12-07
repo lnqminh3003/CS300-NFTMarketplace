@@ -273,7 +273,10 @@ export default function NFTPage() {
                     {item.description}
                   </p>
                 </div>
-                {item.ownerAddress != acc ? (
+
+                {localStorage.getItem("account") != "" ? (
+                  <div>
+                      {item.ownerAddress != acc ? (
                   <div className="flex flex-row border-[#8A939B]">
                     <button
                       onClick={() => {
@@ -314,6 +317,13 @@ export default function NFTPage() {
                     </div>
                   </div>
                 )}
+                  </div>
+                ):(
+                 <div></div>
+                )}
+                
+
+
               </div>
             </div>
           </span>
