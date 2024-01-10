@@ -44,6 +44,7 @@ function CardNFTMetamask({ id, name }: { id: string; name: string }) {
           src= {image}
           alt=""
           className=" w-60 h-60 object-cover rounded-3xl"
+          
         />
         <div className="absolute right-0 bottom-0 left-0 w-full h-32 overflow-hidden bg-gradient-to-t from-black opacity-75 rounded-b-3xl"></div>
         {/* <div className="absolute right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-gradient-to-t from-black rounded-b-3xl"></div> */}
